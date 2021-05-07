@@ -23,10 +23,10 @@ STM32RTC& rtc = STM32RTC::getInstance();
      ***********************************************************************************************************
      * Real Time clock for datalogging/time stamping
      */
-     
-     rtc.setClockSource(STM32RTC::LSE_CLOCK); //Initialize external clock for RTC. That is the only clock running of VBAT
-     rtc.begin(); // initialize RTC 24H format
-
+    #ifdef RTC_ENABLED
+      rtc.setClockSource(STM32RTC::LSE_CLOCK); //Initialize external clock for RTC. That is the only clock running of VBAT
+      rtc.begin(); // initialize RTC 24H format
+    #endif
     /*
     ***********************************************************************************************************
     * Idle

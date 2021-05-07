@@ -26,7 +26,7 @@
 #define micros_safe() micros() //timer5 method is not used on anything but AVR, the micros_safe() macro is simply an alias for the normal micros()
 #define TIMER_RESOLUTION 4
 
-#define RTC_ENABLED
+//#define RTC_ENABLED
 #define USE_SERIAL3
 
 //When building for Black board Serial1 is instanciated,building generic STM32F4x7 has serial2 and serial 1 must be done here
@@ -302,11 +302,18 @@ void ignitionSchedule8Interrupt(HardwareTimer*);
 * CAN / Second serial
 */
 #if defined(STM32F407xx) || defined(STM32F103xB) || defined(STM32F405xx)
+
+#define LED_BUILTIN PC10
+
+
+
+
 #define NATIVE_CAN_AVAILABLE
 //HardwareSerial CANSerial(PD6, PD5);
 #include <src/STM32_CAN/STM32_CAN.h>
 //This activates CAN1 interface on STM32, but it's named as Can0, because that's how Teensy implementation is done
 STM32_CAN Can0 (_CAN1,DEF);
+//STM32_CAN Can1 (_CAN2,ALT);
 /*
 Second CAN interface is also available if needed or it can be used also as primary CAN interface.
 for STM32F4 the default CAN1 pins are PD0 & PD1. Alternative (ALT) pins are PB8 & PB9 and ALT2 pins are PA11 and PA12:
