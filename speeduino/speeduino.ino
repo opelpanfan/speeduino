@@ -85,6 +85,19 @@ void setup()
 {
   initialisationComplete = false; //Tracks whether the initialiseAll() function has run completely
   initialiseAll();
+  
+
+    #ifdef USE_STATUS_LED
+    pinMode(LED_RUNNING, OUTPUT);
+    pinMode(LED_WARNING, OUTPUT);
+    pinMode(LED_ALERT, OUTPUT);
+    pinMode(LED_COMS, OUTPUT);
+
+    digitalWrite(LED_RUNNING, LOW);
+    digitalWrite(LED_WARNING, LOW);
+    digitalWrite(LED_ALERT, LOW);
+    digitalWrite(LED_COMS, LOW);
+    #endif
 }
 
 void loop()
@@ -128,6 +141,8 @@ void loop()
         }
       #endif
       #if defined (NATIVE_CAN_AVAILABLE)
+      
+          dash_generic(&Can0);
           //currentStatus.canin[12] = configPage9.enable_intcan;
           if (configPage9.enable_intcan == 1) // use internal can module
           {

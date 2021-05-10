@@ -136,27 +136,6 @@ LPS25HBStatusTypeDef LPS25HBSensor::Disable(void)
 }
 
 /**
- * @brief  Read ID address of LPS25HB
- * @param  ht_id the pointer where the ID of the device is stored
- * @retval LPS25HB_STATUS_OK in case of success, an error code otherwise
- */
-LPS25HBStatusTypeDef LPS25HBSensor::ReadID(uint8_t *p_id)
-{
-  if(!p_id)
-  { 
-    return LPS25HB_STATUS_ERROR;
-  }
- 
-  /* Read WHO AM I register */
-  if ( LPS25HB_Get_DeviceID( (void *)this, p_id ) == LPS25HB_ERROR )
-  {
-    return LPS25HB_STATUS_ERROR;
-  }
-
-  return LPS25HB_STATUS_OK;
-}
-
-/**
  * @brief  Reboot memory content of LPS25HB
  * @param  None
  * @retval LPS25HB_STATUS_OK in case of success, an error code otherwise
@@ -207,45 +186,6 @@ LPS25HBStatusTypeDef LPS25HBSensor::GetTemperature(float *pfData)
   }
 
   *pfData = ( float )int16data / 10.0f;
-
-  return LPS25HB_STATUS_OK;
-}
-
-/**
- * @brief  Read LPS25HB output data rate
- * @param  odr the pointer to the output data rate
- * @retval LPS25HB_STATUS_OK in case of success, an error code otherwise
- */
-LPS25HBStatusTypeDef LPS25HBSensor::GetODR(float* odr)
-{
-  LPS25HB_Odr_et odr_low_level;
-
-  if ( LPS25HB_Get_Odr( (void *)this, &odr_low_level ) == LPS25HB_ERROR )
-  {
-    return LPS25HB_STATUS_ERROR;
-  }
-
-  switch( odr_low_level )
-  {
-    case LPS25HB_ODR_ONE_SHOT:
-      *odr =  0.0f;
-      break;
-    case LPS25HB_ODR_1HZ:
-      *odr =  1.0f;
-      break;
-    case LPS25HB_ODR_7HZ:
-      *odr =  7.0f;
-      break;
-    case LPS25HB_ODR_12_5HZ:
-      *odr = 12.5f;
-      break;
-    case LPS25HB_ODR_25HZ:
-      *odr = 25.0f;
-      break;
-    default:
-      *odr = -1.0f;
-      return LPS25HB_STATUS_ERROR;
-  }
 
   return LPS25HB_STATUS_OK;
 }

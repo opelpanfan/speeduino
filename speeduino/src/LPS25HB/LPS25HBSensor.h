@@ -70,11 +70,9 @@ class LPS25HBSensor
     LPS25HBStatusTypeDef end            (void);
     LPS25HBStatusTypeDef Enable         (void);
     LPS25HBStatusTypeDef Disable        (void);
-    LPS25HBStatusTypeDef ReadID         (uint8_t *ht_id);
     LPS25HBStatusTypeDef Reset          (void);
     LPS25HBStatusTypeDef GetPressure    (float *pfData);
     LPS25HBStatusTypeDef GetTemperature (float *pfData);
-	LPS25HBStatusTypeDef GetODR         (float *odr);
 	LPS25HBStatusTypeDef SetODR         (float odr);
 	LPS25HBStatusTypeDef ReadReg        (uint8_t reg, uint8_t *data);
 	LPS25HBStatusTypeDef WriteReg       (uint8_t reg, uint8_t data);
