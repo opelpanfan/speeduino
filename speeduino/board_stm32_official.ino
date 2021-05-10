@@ -153,6 +153,26 @@ STM32RTC& rtc = STM32RTC::getInstance();
     #if (INJ_CHANNELS >= 5)
     Timer5.resume();
     #endif
+
+    #ifdef USE_I2C_BARO
+    dev_i2c.begin();
+    lps.begin(LPS25HB_ODR_7HZ);
+    lps.Enable();
+    #endif
+
+    #ifdef USE_STATUS_LED
+    pinMode(LED_RUNNING, OUTPUT);
+    pinMode(LED_WARNING, OUTPUT);
+    pinMode(LED_ALERT, OUTPUT);
+    pinMode(LED_COMS, OUTPUT);
+
+    digitalWrite(LED_RUNNING, LOW);
+    digitalWrite(LED_WARNING, LOW);
+    digitalWrite(LED_ALERT, LOW);
+    digitalWrite(LED_COMS, LOW);
+    #endif
+
+
   }
 
   uint16_t freeRam()

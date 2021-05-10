@@ -38,4 +38,10 @@ void can_Command();
 void sendCancommand(uint8_t cmdtype , uint16_t canadddress, uint8_t candata1, uint8_t candata2, uint16_t sourcecanAddress);
 void obd_response(uint8_t therequestedPID , uint8_t therequestedPIDlow, uint8_t therequestedPIDhigh);
 
+#if defined(CORE_STM32)
+void dash_generic(STM32_CAN *can);
+    #elif defined(CORE_TEENSY)
+void dash_generic(FlexCAN_T4_Base *can);
+    #endif
+
 #endif // CANCOMMS_H

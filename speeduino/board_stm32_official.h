@@ -307,13 +307,13 @@ void ignitionSchedule8Interrupt(HardwareTimer*);
 
 
 
-
 #define NATIVE_CAN_AVAILABLE
 //HardwareSerial CANSerial(PD6, PD5);
 #include <src/STM32_CAN/STM32_CAN.h>
+
 //This activates CAN1 interface on STM32, but it's named as Can0, because that's how Teensy implementation is done
 STM32_CAN Can0 (_CAN1,DEF);
-//STM32_CAN Can1 (_CAN2,ALT);
+STM32_CAN Can1 (_CAN2,ALT);
 /*
 Second CAN interface is also available if needed or it can be used also as primary CAN interface.
 for STM32F4 the default CAN1 pins are PD0 & PD1. Alternative (ALT) pins are PB8 & PB9 and ALT2 pins are PA11 and PA12:
@@ -326,6 +326,22 @@ STM32_CAN Can1 (_CAN2,ALT);
 static CAN_message_t outMsg;
 static CAN_message_t inMsg;
 #endif
+
+
+#define USE_I2C_BARO
+#ifdef USE_I2C_BARO
+#include <src/LPS25HB/LPS25HBSensor.h>
+TwoWire dev_i2c(PB11, PB10);
+LPS25HBSensor lps(&dev_i2c, LPS25HB_ADDRESS_LOW);
+#endif //USE_I2C_BARO
+
+#define USE_STATUS_LED
+#ifdef USE_STATUS_LED
+#define LED_RUNNING PG11
+#define LED_WARNING PG10
+#define LED_ALERT PG9
+#define LED_COMS PG12
+#endif //USE_STATUS_LED
 
 #endif //CORE_STM32
 #endif //STM32_H

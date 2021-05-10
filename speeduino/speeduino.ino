@@ -79,6 +79,7 @@ uint32_t rollingCutLastRev = 0; /**< Tracks whether we're on the same or a diffe
 
 uint16_t staged_req_fuel_mult_pri = 0;
 uint16_t staged_req_fuel_mult_sec = 0;   
+
 #ifndef UNIT_TEST // Scope guard for unit testing
 void setup()
 {
@@ -348,7 +349,24 @@ void loop()
     if (BIT_CHECK(LOOP_TIMER, BIT_TIMER_1HZ)) //Once per second)
     {
       BIT_CLEAR(TIMER_mask, BIT_TIMER_1HZ);
+
+      #ifdef USE_STATUS_LED
+      digitalToggle(LED_RUNNING);
+      #endif
+
+      #ifdef USE_I2C_BARO
+        float pressure;
+        float temperature;
+        lps.GetPressure(&pressure);
+        lps.GetTemperature(&temperature);
+        currentStatus.egoCorrection = pressure / 10.0f; 
+        currentStatus.baro = pressure / 10.0f; 
+        currentStatus.baroCorrection = temperature;
+      #endif
+      
+      #ifndef USE_I2C_BARO
       readBaro(); //Infrequent baro readings are not an issue.
+      #endif      
 
       if ( (configPage10.wmiEnabled > 0) && (configPage10.wmiIndicatorEnabled > 0) )
       {
