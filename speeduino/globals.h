@@ -651,6 +651,7 @@ struct statuses {
   byte vvt2Duty;
   byte outputsStatus;
   byte TS_SD_Status; //TunerStudios SD card status
+  volatile int8_t ecuTemp;
 };
 
 /**

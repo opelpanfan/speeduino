@@ -374,9 +374,8 @@ void loop()
         float temperature;
         lps.GetPressure(&pressure);
         lps.GetTemperature(&temperature);
-        currentStatus.egoCorrection = pressure / 10.0f; 
+        currentStatus.fuelTemp = temperature; 
         currentStatus.baro = pressure / 10.0f; 
-        currentStatus.baroCorrection = temperature;
       #endif
       
       #ifndef USE_I2C_BARO

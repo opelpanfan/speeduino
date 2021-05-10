@@ -2111,77 +2111,76 @@ void setPinMapping(byte boardID)
       #endif
       break;
     case 60:
+        //******************************************
+        //******** C8 CORE STM 407ZG CONNECTIONS *************** 
+        //******************************************
         #if defined(STM32F407xx)
 
         //******************************************
         //******** Trigger CONNECTIONS *************** 
         //******************************************
         
-        pinTrigger = PC13; 
-        pinTrigger2 = PE6; 
+        pinTrigger = PE2; 
+        pinTrigger2 = PE3; 
+        pinVSS = PE4;
 
         //******************************************
         //******** ANALOG CONNECTIONS *************** 
         //******************************************
+        //ADC1 = STM_PIN_DATA_EXT(STM_MODE_ANALOG, GPIO_NOPULL, 0, 6, 0)
 
-        pinBat = PA0;
-        pinCLT = PA2;
-        pinTPS = PA1;
-        pinIAT = PA3;
-        pinO2 = PA4;
-        pinBaro = PB1;
-        pinMAP = PB0;
-        pinOilPressure = PC5;
-        pinFuelPressure = PC4;
-        pinSpareTemp1 = PC0;
-        pinSpareTemp2 = PC1;
+        pinBat = PA0; //ADC123
+        pinCLT = PA4; //ADC12
+        pinTPS = PA2; //ADC12
+        pinIAT = PA3; //ADC12 LED_BUILTIN_1
+        pinO2 = PC1; //ADC12 LED_BUILTIN_2
+        pinO2_2 = PC2; //ADC12 LED_BUILTIN_2
+        pinBaro = PC5; //ADC12
+        pinMAP = PA5;
+        pinOilPressure = PA4;  //(DO NOT USE FOR SPEEDUINO) ADC123 - SPI FLASH CHIP CS pin
+        pinFuelPressure = PB0; //ADC12
 
         //******************************************
         //******** INJECTOR CONNECTIONS *************** 
         //******************************************
         
-        pinInjector8 = PE8;  //
-        pinInjector7 = PE9; //
-        pinInjector6 = PE10;  //
-        pinInjector5 = PE11; //
-        pinInjector4 = PE12; //
-        pinInjector3 = PE13; //
-        pinInjector2 = PE14; //
-        pinInjector1 = PE15;  //
+        pinInjector8 = PD13;  //
+        pinInjector7 = PD12; //
+        pinInjector6 = PD11;  //
+        pinInjector5 = PD10; //
+        pinInjector4 = PD9; //
+        pinInjector3 = PD8; //
+        pinInjector2 = PB15; //
+        pinInjector1 = PB14;  //
         
         //******************************************
         //******** COIL CONNECTIONS *************** 
         //******************************************
 
-        pinCoil1 = PD12; //
-        pinCoil2 = PD13; //
-        pinCoil3 = PB15;  //
-        pinCoil4 = PB14;  //
-        pinCoil5 = PD8;  //
-        pinCoil6 = PD9;//
-        pinCoil7 = PD11;  //
-        pinCoil8 = PD10;//
+        pinCoil1 = PE15; //
+        pinCoil2 = PE14; //
+        pinCoil3 = PE13;  //
+        pinCoil4 = PE12;  //  
+        pinCoil5 = PE11;  //
+        pinCoil6 = PF15;//
+        pinCoil7 = PG0;  //
+        pinCoil8 = PG1;//
 
         //******************************************
         //******** OTHER CONNECTIONS *************** 
         //******************************************
+        
+        pinBoost = PD14; //
+        pinFan = PA15; //
+        pinFuelPump = PD3; //
+        pinTachOut = PG3; //
+        pinIdle1 = PG4; //
+        pinIdle2 = PG5; //
+        
+        //pinStepperStep = PC15;  //(DO NOT USE FOR SPEEDUINO) - SDIO_D0
+        //pinStepperDir = PC14;  //(DO NOT USE FOR SPEEDUINO) - SDIO_D1
+        //pinStepperEnable = PC10;  //(DO NOT USE FOR SPEEDUINO) - SDIO_D1        
 
-        pinVVT_1 = PD15; //
-        
-        pinIdle1 = PC6; //
-        pinIdle2 = PD14; //
-        pinBoost = PC7; //
-        pinLaunch = PE1; //
-        pinFan = PE2; //
-        pinFuelPump = PE3; //
-        pinSpareLOut1 = PE4;  //
-        pinTachOut = PE5; //
-        
-        pinStepperStep = PC8;  //
-        pinStepperDir = PC9;  //
-        pinStepperEnable = PA8;  //
-        
-    
     #endif
       break;
     default:
