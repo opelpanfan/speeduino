@@ -342,6 +342,7 @@
 #define ENGINE_PROTECT_BIT_MAP  1
 #define ENGINE_PROTECT_BIT_OIL  2
 #define ENGINE_PROTECT_BIT_AFR  3
+#define ENGINE_PROTECT_BIT_COOLANT  4
 
 //Table sizes
 #define CALIBRATION_TABLE_SIZE 512
@@ -410,6 +411,7 @@ extern struct table2D knockWindowStartTable;
 extern struct table2D knockWindowDurationTable;
 extern struct table2D oilPressureProtectTable;
 extern struct table2D wmiAdvTable; //6 bin wmi correction table for timing advance (2D)
+extern struct table2D coolantProtectTable; //6 bin coolant temperature protection table for engine protection (2D)
 
 //These are for the direct port manipulation of the injectors, coils and aux outputs
 extern volatile PORT_TYPE *inj1_pin_port;
@@ -1204,7 +1206,8 @@ struct config10 {
   byte fuelPressureEnable : 1;
   byte oilPressureEnable : 1;
   byte oilPressureProtEnbl : 1;
-  byte unused10_135 : 5;
+  byte coolantProtEnbl : 1;
+  byte unused10_135 : 4;
 
   byte fuelPressurePin : 4;
   byte oilPressurePin : 4;
@@ -1296,8 +1299,11 @@ struct config13 {
   struct cmpOperation operation[8];
 
   uint16_t candID[8]; //Actual CAN ID need 16bits, this is a placeholder
+    //106
+  byte coolantProtRPM[6];
+  byte coolantProtTemp[6];
 
-  byte unused12_106_127[22];
+  byte unused12_106_127[10];
 
 #if defined(CORE_AVR)
   };
