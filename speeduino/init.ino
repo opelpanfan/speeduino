@@ -2126,9 +2126,8 @@ void setPinMapping(byte boardID)
         //******** Trigger CONNECTIONS *************** 
         //******************************************
         
-        pinTrigger = PE2; 
-        pinTrigger2 = PE3; 
-        pinVSS = PE4;
+        pinTrigger = PB8; 
+        pinTrigger2 = PB9;
 
         //******************************************
         //******** ANALOG CONNECTIONS *************** 
@@ -2163,25 +2162,25 @@ void setPinMapping(byte boardID)
         //******** COIL CONNECTIONS *************** 
         //******************************************
 
-        pinCoil1 = PE15; //
-        pinCoil2 = PE14; //
-        pinCoil3 = PE13;  //
-        pinCoil4 = PE12;  //  
+        pinCoil1 = PE7; //
+        pinCoil2 = PE8; //
+        pinCoil3 = PE9;  //
+        pinCoil4 = PE10;  //  
         pinCoil5 = PE11;  //
-        pinCoil6 = PF15;//
-        pinCoil7 = PG0;  //
-        pinCoil8 = PG1;//
+        pinCoil6 = PE12;//
+        pinCoil7 = PE13;  //
+        pinCoil8 = PE14;//
 
         //******************************************
         //******** OTHER CONNECTIONS *************** 
         //******************************************
         
-        pinBoost = PD14; //
-        pinFan = PA15; //
-        pinFuelPump = PD3; //
-        pinTachOut = PG3; //
-        pinIdle1 = PG4; //
-        pinIdle2 = PG5; //
+        pinBoost = PB5; //
+        pinFan = PB4; //
+        pinFuelPump = PB3; //
+        pinTachOut = PD7; //
+        pinIdle1 = PD6; //
+        pinIdle2 = PD5; //
         
         //pinStepperStep = PC15;  //(DO NOT USE FOR SPEEDUINO) - SDIO_D0
         //pinStepperDir = PC14;  //(DO NOT USE FOR SPEEDUINO) - SDIO_D1
