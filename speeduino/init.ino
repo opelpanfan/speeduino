@@ -2126,8 +2126,8 @@ void setPinMapping(byte boardID)
         //******** Trigger CONNECTIONS *************** 
         //******************************************
         
-        pinTrigger = PB8; 
-        pinTrigger2 = PB9;
+        pinTrigger = PE2; 
+        pinTrigger2 = PE3;
 
         //******************************************
         //******** ANALOG CONNECTIONS *************** 
