@@ -883,4 +883,5 @@ void dash_generic(FlexCAN_T4_Base *can)
 
     //
   }
+}
 #endif
