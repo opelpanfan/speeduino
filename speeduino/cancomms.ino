@@ -713,5 +713,174 @@ if (PIDmode == 0x01)
             }
        }     
     }
+
 }
+
+
+    
+
+#if defined(CORE_STM32)
+void dash_generic(STM32_CAN *can)
+    #elif defined(CORE_TEENSY)
+void dash_generic(FlexCAN_T4_Base *can)
+    #endif
+{
+  #if defined(LED_ALERT)
+    digitalWrite(LED_ALERT, currentStatus.engineProtectStatus);
+  #endif
+  //BMW iDrive controller
+  if (BIT_CHECK(LOOP_TIMER, BIT_TIMER_1HZ))
+  {    
+    outMsg.id = 0x202;
+    outMsg.len = 1;
+    outMsg.buf[0] = 0xFD;
+    can->write(outMsg);       
+
+    outMsg.id = 0x563;
+    outMsg.len = 1;
+    outMsg.buf[0] = 0x63;
+    can->write(outMsg); 
+    
+    outMsg.id = 0x273;
+    outMsg.len = 8;
+    outMsg.buf[0] = 0x1D;
+    outMsg.buf[1] = 0xE1;
+    outMsg.buf[2] = 0x00;
+    outMsg.buf[3] = 0xF0;
+    outMsg.buf[4] = 0xFF;
+    outMsg.buf[5] = 0x7F;
+    outMsg.buf[6] = 0xDE;
+    outMsg.buf[7] = 0x00;
+    can->write(outMsg); 
+    
+
+    delay(5);
+  }
+  if (BIT_CHECK(LOOP_TIMER, BIT_TIMER_4HZ))
+  {
+
+    outMsg.id = 0x370 + 2;
+    outMsg.len = 8;
+    outMsg.buf[0] = highByte(currentStatus.battery10);
+    outMsg.buf[1] = lowByte(currentStatus.battery10);
+    outMsg.buf[2] = highByte(0x00);
+    outMsg.buf[3] = lowByte(0x00);
+    outMsg.buf[4] = highByte(currentStatus.boostTarget);
+    outMsg.buf[5] = lowByte(currentStatus.boostTarget);
+    outMsg.buf[6] = highByte(currentStatus.baro);
+    outMsg.buf[7] = lowByte(currentStatus.baro);
+    can->write(outMsg); 
+    
+    outMsg.id = 0x3E0 + 0;
+    outMsg.len = 4;
+    outMsg.buf[0] = highByte(currentStatus.coolant);
+    outMsg.buf[1] = lowByte(currentStatus.coolant);
+    outMsg.buf[2] = highByte(currentStatus.IAT);
+    outMsg.buf[3] = lowByte(currentStatus.IAT);
+    can->write(outMsg); 
+    
+    outMsg.id = 0x368 + 1;
+    outMsg.len = 2;
+    outMsg.buf[0] = highByte(currentStatus.syncLossCounter);
+    outMsg.buf[1] = lowByte(currentStatus.syncLossCounter);
+    can->write(outMsg); 
+    delay(5);
+  }
+
+  if (BIT_CHECK(LOOP_TIMER, BIT_TIMER_30HZ))
+  {
+    #if defined(LED_COMS)
+      digitalToggle(LED_COMS);
+    #endif    
+    
+    outMsg.id = 0x3E8;
+    outMsg.len = 8;
+    outMsg.buf[0] = 0;
+    outMsg.buf[1] = 0;
+    outMsg.buf[2] = lowByte(currentStatus.RPM);
+    outMsg.buf[3] = highByte(currentStatus.RPM);
+    outMsg.buf[4] = lowByte(currentStatus.MAP - currentStatus.baro);
+    outMsg.buf[5] = highByte(currentStatus.MAP - currentStatus.baro);
+    outMsg.buf[6] = 0;
+    outMsg.buf[7] = 0;
+    can->write(outMsg); 
+
+
+    outMsg.id = 0x3E8;
+    outMsg.len = 8;
+    outMsg.buf[0] = 0 + 1;
+    outMsg.buf[1] = 0;
+    outMsg.buf[2] = lowByte(currentStatus.baro * 10);
+    outMsg.buf[3] = highByte(currentStatus.baro * 10);
+    outMsg.buf[4] = lowByte(currentStatus.TPS * 10);
+    outMsg.buf[5] = highByte(currentStatus.TPS * 10);
+    outMsg.buf[6] = 0;
+    outMsg.buf[7] = 0;
+    can->write(outMsg); 
+
+    outMsg.id = 0x3E8;
+    outMsg.len = 8;
+    outMsg.buf[0] = 0 + 2;
+    outMsg.buf[1] = 0;
+    outMsg.buf[2] = 0;
+    outMsg.buf[3] = 0;
+    outMsg.buf[4] = lowByte(currentStatus.PW1);
+    outMsg.buf[5] = highByte(currentStatus.PW1);
+    outMsg.buf[6] = lowByte(currentStatus.coolant + 50);
+    outMsg.buf[7] = highByte(currentStatus.coolant + 50);
+    can->write(outMsg); 
+
+    delay(5);
+
+    outMsg.id = 0x3E8;
+    outMsg.len = 8;
+    outMsg.buf[0] = 0 + 3;
+    outMsg.buf[1] = 0;
+    outMsg.buf[2] = lowByte(currentStatus.IAT + 50);
+    outMsg.buf[3] = highByte(currentStatus.IAT + 50);
+    outMsg.buf[4] = lowByte(currentStatus.battery10 * 10);
+    outMsg.buf[5] = highByte(currentStatus.battery10 * 10);
+    outMsg.buf[6] = 0;
+    outMsg.buf[7] = 0;
+    can->write(outMsg); 
+
+    outMsg.id = 0x3E8;
+    outMsg.len = 8;
+    outMsg.buf[0] = 0 + 6;
+    outMsg.buf[1] = 0;
+    outMsg.buf[2] = 0;
+    outMsg.buf[3] = 0;
+    outMsg.buf[4] = lowByte((uint8_t)(currentStatus.O2 * 100 / configPage2.stoich));
+    outMsg.buf[5] = highByte((uint8_t)(currentStatus.O2 * 100 / configPage2.stoich));
+    outMsg.buf[6] = 0;
+    outMsg.buf[7] = 0;
+    can->write(outMsg); 
+    
+    // outMsg.id = 0x360 + 0;
+    // outMsg.len = 6;
+    // outMsg.buf[0] = highByte(currentStatus.RPM);
+    // outMsg.buf[1] = lowByte(currentStatus.RPM);
+    // outMsg.buf[2] = highByte(currentStatus.MAP - currentStatus.baro);
+    // outMsg.buf[3] = lowByte(currentStatus.MAP - currentStatus.baro);
+    // outMsg.buf[4] = highByte(currentStatus.TPS);
+    // outMsg.buf[5] = lowByte(currentStatus.TPS);
+    // can->write(outMsg); 
+    
+    
+    // outMsg.id = 0x368 + 0;
+    // outMsg.len = 2;
+    // outMsg.buf[0] = highByte(currentStatus.O2);
+    // outMsg.buf[1] = lowByte(currentStatus.O2);
+    // can->write(outMsg); 
+    
+    // outMsg.id = 0x360 + 1;
+    // outMsg.len = 4;
+    // outMsg.buf[0] = highByte(currentStatus.fuelPressure);
+    // outMsg.buf[1] = lowByte(currentStatus.fuelPressure);
+    // outMsg.buf[2] = highByte(currentStatus.oilPressure);
+    // outMsg.buf[3] = lowByte(currentStatus.oilPressure);
+    // can->write(outMsg); 
+
+    //
+  }
 #endif
