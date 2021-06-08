@@ -303,9 +303,9 @@ void ignitionSchedule8Interrupt(HardwareTimer*);
 */
 #if defined(STM32F407xx) || defined(STM32F103xB) || defined(STM32F405xx)
 
-#define LED_BUILTIN PC10
-#define LED_COMS PC11
-// #define LED_ALERT PC12
+#define LED_BUILTIN PC12
+#define LED_COMS PC10
+#define LED_ALERT PC11
 
 
 #define NATIVE_CAN_AVAILABLE
