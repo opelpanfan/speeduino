@@ -337,9 +337,9 @@ LPS25HBSensor lps(&dev_i2c, LPS25HB_ADDRESS_LOW);
 
 #define USE_STATUS_LED
 #ifdef USE_STATUS_LED
-#define LED_RUNNING PG11
+#define LED_RUNNING PG9
 #define LED_WARNING PG10
-#define LED_ALERT PG9
+#define LED_ALERT PG11
 #define LED_COMS PG12
 #endif //USE_STATUS_LED
 

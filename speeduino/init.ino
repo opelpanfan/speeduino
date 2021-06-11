@@ -2129,6 +2129,7 @@ void setPinMapping(byte boardID)
         pinTrigger = PE2; 
         pinTrigger2 = PE3; 
         pinVSS = PE4;
+        pinVSS = PE5;
 
         //******************************************
         //******** ANALOG CONNECTIONS *************** 
