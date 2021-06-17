@@ -856,32 +856,31 @@ void dash_generic(FlexCAN_T4_Base *can)
     outMsg.buf[7] = 0;
     can->write(outMsg); 
     
-    // outMsg.id = 0x360 + 0;
-    // outMsg.len = 6;
-    // outMsg.buf[0] = highByte(currentStatus.RPM);
-    // outMsg.buf[1] = lowByte(currentStatus.RPM);
-    // outMsg.buf[2] = highByte(currentStatus.MAP - currentStatus.baro);
-    // outMsg.buf[3] = lowByte(currentStatus.MAP - currentStatus.baro);
-    // outMsg.buf[4] = highByte(currentStatus.TPS);
-    // outMsg.buf[5] = lowByte(currentStatus.TPS);
-    // can->write(outMsg); 
-    
-    
-    // outMsg.id = 0x368 + 0;
-    // outMsg.len = 2;
-    // outMsg.buf[0] = highByte(currentStatus.O2);
-    // outMsg.buf[1] = lowByte(currentStatus.O2);
-    // can->write(outMsg); 
-    
-    // outMsg.id = 0x360 + 1;
-    // outMsg.len = 4;
-    // outMsg.buf[0] = highByte(currentStatus.fuelPressure);
-    // outMsg.buf[1] = lowByte(currentStatus.fuelPressure);
-    // outMsg.buf[2] = highByte(currentStatus.oilPressure);
-    // outMsg.buf[3] = lowByte(currentStatus.oilPressure);
-    // can->write(outMsg); 
+    outMsg.id = 0x3E8;
+    outMsg.len = 8;
+    outMsg.buf[0] = 0 + 7;
+    outMsg.buf[1] = 0;
+    outMsg.buf[2] = lowByte(currentStatus.syncLossCounter);
+    outMsg.buf[3] = highByte(currentStatus.syncLossCounter);
+    outMsg.buf[4] = 0;
+    outMsg.buf[5] = 0;
+    outMsg.buf[6] = lowByte(currentStatus.fuelPressure * 10);
+    outMsg.buf[7] = highByte(currentStatus.fuelPressure * 10);
+    can->write(outMsg); 
 
-    //
+    delay(5);
+
+    outMsg.id = 0x3E8;
+    outMsg.len = 8;
+    outMsg.buf[0] = 0 + 8;
+    outMsg.buf[1] = 0;
+    outMsg.buf[2] = 0;
+    outMsg.buf[3] = 0;
+    outMsg.buf[4] = lowByte(currentStatus.oilPressure * 10);
+    outMsg.buf[5] = highByte(currentStatus.oilPressure * 10);
+    outMsg.buf[6] = 0;
+    outMsg.buf[7] = 0;
+    can->write(outMsg); 
   }
 }
 #endif
