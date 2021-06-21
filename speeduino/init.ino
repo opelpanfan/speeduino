@@ -2128,7 +2128,7 @@ void setPinMapping(byte boardID)
         
         pinTrigger = PE2; 
         pinTrigger2 = PE3; 
-        pinVSS = PE4;
+        pinTrigger3 = PE4;
         pinVSS = PE5;
 
         //******************************************
@@ -2137,14 +2137,14 @@ void setPinMapping(byte boardID)
         //ADC1 = STM_PIN_DATA_EXT(STM_MODE_ANALOG, GPIO_NOPULL, 0, 6, 0)
 
         pinBat = PA0; //ADC123
-        pinCLT = PA4; //ADC12
-        pinTPS = PA2; //ADC12
-        pinIAT = PA3; //ADC12 LED_BUILTIN_1
+        pinCLT = PA3; //ADC12
+        pinTPS = PA1; //ADC12
+        pinIAT = PA4; //ADC12 LED_BUILTIN_1
         pinO2 = PC1; //ADC12 LED_BUILTIN_2
         pinO2_2 = PC2; //ADC12 LED_BUILTIN_2
         pinBaro = PC5; //ADC12
         pinMAP = PA5;
-        pinOilPressure = PA4;  //(DO NOT USE FOR SPEEDUINO) ADC123 - SPI FLASH CHIP CS pin
+        pinOilPressure = PB1;  //(DO NOT USE FOR SPEEDUINO) ADC123 - SPI FLASH CHIP CS pin
         pinFuelPressure = PB0; //ADC12
 
         //******************************************
@@ -2184,9 +2184,9 @@ void setPinMapping(byte boardID)
         pinIdle1 = PG4; //
         pinIdle2 = PG5; //
         
-        //pinStepperStep = PC15;  //(DO NOT USE FOR SPEEDUINO) - SDIO_D0
-        //pinStepperDir = PC14;  //(DO NOT USE FOR SPEEDUINO) - SDIO_D1
-        //pinStepperEnable = PC10;  //(DO NOT USE FOR SPEEDUINO) - SDIO_D1        
+        pinStepperStep = PF8;  //(DO NOT USE FOR SPEEDUINO) - SDIO_D0
+        pinStepperDir = PF7;  //(DO NOT USE FOR SPEEDUINO) - SDIO_D1
+        pinStepperEnable = PF6;  //(DO NOT USE FOR SPEEDUINO) - SDIO_D1        
 
     #endif
       break;
