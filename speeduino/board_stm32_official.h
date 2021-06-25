@@ -303,9 +303,9 @@ void ignitionSchedule8Interrupt(HardwareTimer*);
 */
 #if defined(STM32F407xx) || defined(STM32F103xB) || defined(STM32F405xx)
 
-#define LED_BUILTIN PC10
-#define LED_COMS PC11
-// #define LED_ALERT PC12
+#define LED_BUILTIN PC12
+#define LED_COMS PC10
+#define LED_ALERT PC11
 
 
 #define NATIVE_CAN_AVAILABLE
@@ -313,6 +313,9 @@ void ignitionSchedule8Interrupt(HardwareTimer*);
 #include <src/STM32_CAN/STM32_CAN.h>
 //This activates CAN1 interface on STM32, but it's named as Can0, because that's how Teensy implementation is done
 STM32_CAN Can0 (_CAN1,DEF);
+
+
+#define USE_CAN2 true
 STM32_CAN Can1 (_CAN2,ALT);
 /*
 Second CAN interface is also available if needed or it can be used also as primary CAN interface.

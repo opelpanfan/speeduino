@@ -881,7 +881,6 @@ void dash_generic(FlexCAN_T4_Base *can)
     outMsg.buf[6] = 0;
     outMsg.buf[7] = 0;
     can->write(outMsg); 
-
   }
 }
 #endif
