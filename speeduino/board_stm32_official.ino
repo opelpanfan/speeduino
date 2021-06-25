@@ -159,6 +159,12 @@ STM32RTC& rtc = STM32RTC::getInstance();
     #if (INJ_CHANNELS >= 5)
     Timer5.resume();
     #endif
+
+    #ifdef USE_I2C_BARO
+    dev_i2c.begin();
+    lps.begin(LPS25HB_ODR_7HZ);
+    lps.Enable();
+    #endif
   }
 
   uint16_t freeRam()

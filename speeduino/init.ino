@@ -199,6 +199,12 @@ void initialiseAll()
     oilPressureProtectTable.values = configPage10.oilPressureProtMins;
     oilPressureProtectTable.axisX = configPage10.oilPressureProtRPM;
 
+    coolantProtectTable.valueSize = SIZE_BYTE;
+    coolantProtectTable.axisSize = SIZE_BYTE; //Set this table to use byte axis bins
+    coolantProtectTable.xSize = 6;
+    coolantProtectTable.values = configPage13.coolantProtRPM;
+    coolantProtectTable.axisX = configPage13.coolantProtTemp;
+
     wmiAdvTable.valueSize = SIZE_BYTE;
     wmiAdvTable.axisSize = SIZE_BYTE; //Set this table to use byte axis bins
     wmiAdvTable.xSize = 6;
@@ -2115,7 +2121,10 @@ void setPinMapping(byte boardID)
 
       #endif
       break;
-    case 60:
+ case 60:
+        //******************************************
+        //******** C8 CORE STM 407ZG CONNECTIONS *************** 
+        //******************************************
         #if defined(STM32F407xx)
 
         //******************************************
@@ -2184,9 +2193,8 @@ void setPinMapping(byte boardID)
         
         pinStepperStep = PC8;  //
         pinStepperDir = PC9;  //
-        pinStepperEnable = PA8;  //
-        
-    
+        pinStepperEnable = PA8;  // 
+
     #endif
       break;
     default:
