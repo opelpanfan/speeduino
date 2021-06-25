@@ -303,7 +303,7 @@ void ignitionSchedule8Interrupt(HardwareTimer*);
 */
 #if defined(STM32F407xx) || defined(STM32F103xB) || defined(STM32F405xx)
 
-#define LED_BUILTIN PC10
+#define LED_BUILTIN PG10
 
 
 
@@ -335,7 +335,7 @@ TwoWire dev_i2c(PB11, PB10);
 LPS25HBSensor lps(&dev_i2c, LPS25HB_ADDRESS_LOW);
 #endif //USE_I2C_BARO
 
-// #define USE_STATUS_LED
+#define USE_STATUS_LED
 #ifdef USE_STATUS_LED
 #define LED_RUNNING PG11
 #define LED_WARNING PG10

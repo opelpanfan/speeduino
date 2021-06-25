@@ -2143,8 +2143,8 @@ void setPinMapping(byte boardID)
         pinO2_2 = PC2; //ADC12 LED_BUILTIN_2
         pinBaro = PC5; //ADC12
         pinMAP = PA5;
-        pinOilPressure = PA4;  //(DO NOT USE FOR SPEEDUINO) ADC123 - SPI FLASH CHIP CS pin
-        pinFuelPressure = PB0; //ADC12
+        pinOilPressure = PA7;  //(DO NOT USE FOR SPEEDUINO) ADC123 - SPI FLASH CHIP CS pin
+        pinFuelPressure = PC4; //ADC12
 
         //******************************************
         //******** INJECTOR CONNECTIONS *************** 
