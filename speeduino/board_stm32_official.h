@@ -303,9 +303,7 @@ void ignitionSchedule8Interrupt(HardwareTimer*);
 */
 #if defined(STM32F407xx) || defined(STM32F103xB) || defined(STM32F405xx)
 
-#define LED_BUILTIN PG10
-
-
+#define LED_BUILTIN PG11
 
 #define NATIVE_CAN_AVAILABLE
 //HardwareSerial CANSerial(PD6, PD5);
