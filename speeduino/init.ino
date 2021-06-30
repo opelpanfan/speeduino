@@ -2126,66 +2126,64 @@ void setPinMapping(byte boardID)
         //******** Trigger CONNECTIONS *************** 
         //******************************************
         
-        pinTrigger = PE2; 
-        pinTrigger2 = PE3; 
-        pinVSS = PE4;
+        pinTrigger = PE2;     //TS-106
+        pinTrigger2 = PE3;    //TS-107
+        pinTrigger3 = PE4;    //TS-104
+        pinVSS = PE5;         //TS-105
 
         //******************************************
         //******** ANALOG CONNECTIONS *************** 
         //******************************************
-        //ADC1 = STM_PIN_DATA_EXT(STM_MODE_ANALOG, GPIO_NOPULL, 0, 6, 0)
 
-        pinBat = PA0; //ADC123
-        pinCLT = PA4; //ADC12
-        pinTPS = PA2; //ADC12
-        pinIAT = PA3; //ADC12 LED_BUILTIN_1
-        pinO2 = PC1; //ADC12 LED_BUILTIN_2
-        pinO2_2 = PC2; //ADC12 LED_BUILTIN_2
-        pinBaro = PC5; //ADC12
-        pinMAP = PA5;
-        pinOilPressure = PA7;  //(DO NOT USE FOR SPEEDUINO) ADC123 - SPI FLASH CHIP CS pin
-        pinFuelPressure = PC4; //ADC12
+        pinBat = PA0;         //TS-A12
+        pinCLT = PA4;         //TS-A8     //CORE-A4
+        pinTPS = PA2;         //TS-A10    //CORE-A2
+        pinIAT = PA3;         //TS-A7     //CORE-A3
+        pinO2 = PC1;          //TS-A13    
+        pinO2_2 = PC2;        //TS-A14    
+        pinBaro = PC5;        //TS-A1     //CORE-A9
+        pinMAP = PA5;         //TS-A5     //CORE-A5
+        pinOilPressure = PA7; //TS-A3     //CORE-A7
+        pinFuelPressure = PC4;//TS-A4     //CORE-A8
 
         //******************************************
         //******** INJECTOR CONNECTIONS *************** 
         //******************************************
         
-        pinInjector8 = PD13;  //
-        pinInjector7 = PD12; //
-        pinInjector6 = PD11;  //
-        pinInjector5 = PD10; //
-        pinInjector4 = PD9; //
-        pinInjector3 = PD8; //
-        pinInjector2 = PB15; //
-        pinInjector1 = PB14;  //
+        pinInjector1 = PD13;  //TS-9      //CORE-L8
+        pinInjector2 = PD12;  //TS-8      //CORE-L7
+        pinInjector3 = PD11;  //TS-7      //CORE-L6
+        pinInjector4 = PD10;  //TS-6      //CORE-L5
+        pinInjector5 = PD9;   //TS-5      //CORE-L4
+        pinInjector6 = PD8;   //TS-4      //CORE-L3
+        pinInjector7 = PB15;  //TS-3      //CORE-L2
+        pinInjector8 = PB14;  //TS-2      //CORE-L1
         
         //******************************************
         //******** COIL CONNECTIONS *************** 
         //******************************************
 
-        pinCoil1 = PE15; //
-        pinCoil2 = PE14; //
-        pinCoil3 = PE13;  //
-        pinCoil4 = PE12;  //  
-        pinCoil5 = PE11;  //
-        pinCoil6 = PF15;//
-        pinCoil7 = PG0;  //
-        pinCoil8 = PG1;//
+        pinCoil2 = PE15;      //TS-59     //CORE-H1
+        pinCoil1 = PE14;      //TS-58     //CORE-H2
+        pinCoil4 = PE13;      //TS-61     //CORE-H3
+        pinCoil3 = PE12;      //TS-60     //CORE-H4
+        pinCoil6 = PE11;      //TS-63     //CORE-H5
+        pinCoil5 = PF15;      //TS-68     //CORE-H6
+        pinCoil8 = PG0;       //TS-69     //CORE-H7
+        pinCoil7 = PG1;       //TS-66     //CORE-H8
 
         //******************************************
         //******** OTHER CONNECTIONS *************** 
         //******************************************
         
-        pinBoost = PD14; //
-        pinFan = PA15; //
-        pinFuelPump = PD3; //
-        pinTachOut = PG3; //
-        pinIdle1 = PG4; //
-        pinIdle2 = PG5; //
-        
-        //pinStepperStep = PC15;  //(DO NOT USE FOR SPEEDUINO) - SDIO_D0
-        //pinStepperDir = PC14;  //(DO NOT USE FOR SPEEDUINO) - SDIO_D1
-        //pinStepperEnable = PC10;  //(DO NOT USE FOR SPEEDUINO) - SDIO_D1        
+        pinFan = PG7;         //TS-17     //CORE-L16
+        pinFuelPump = PG6;    //TS-16     //CORE-L15
+        pinSpareLOut1 = PG5;  //TS-15     //CORE-L14      
+        pinBoost = PG4;       //TS-14     //CORE-L13
+        pinIdle1 = PG3;       //TS-13     //CORE-L12
+        pinVVT_1 = PG2;       //TS-12     //CORE-L11
+        pinVVT_2 = PD15;      //TS-11     //CORE-L10
+        pinTachOut = PD14;    //TS-10     //CORE-L9
 
     #endif
       break;
