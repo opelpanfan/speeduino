@@ -26,10 +26,6 @@
 #define micros_safe() micros() //timer5 method is not used on anything but AVR, the micros_safe() macro is simply an alias for the normal micros()
 #define TIMER_RESOLUTION 4
 
-
-#define BOARD_MAX_DIGITAL_PINS 110
-#define BOARD_MAX_IO_PINS 110 //digital pins + analog channels + 1
-
 //#define RTC_ENABLED
 #define USE_SERIAL3
 #define BOARD_MAX_DIGITAL_PINS 110

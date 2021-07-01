@@ -2128,8 +2128,8 @@ void setPinMapping(byte boardID)
         
         pinTrigger = PE2;     //TS-106
         pinTrigger2 = PE3;    //TS-107
-        pinTrigger3 = PE4;    //TS-104
-        pinVSS = PE5;         //TS-105
+        //pinTrigger3 = PE4;    //TS-104
+        //pinVSS = PE5;         //TS-105
 
         //******************************************
         //******** ANALOG CONNECTIONS *************** 
@@ -2181,8 +2181,8 @@ void setPinMapping(byte boardID)
         pinSpareLOut1 = PG5;  //TS-15     //CORE-L14      
         pinBoost = PG4;       //TS-14     //CORE-L13
         pinIdle1 = PG3;       //TS-13     //CORE-L12
-        pinVVT_1 = PG2;       //TS-12     //CORE-L11
-        pinVVT_2 = PD15;      //TS-11     //CORE-L10
+        //pinVVT_1 = PG2;       //TS-12     //CORE-L11
+        //pinVVT_2 = PD15;      //TS-11     //CORE-L10
         pinTachOut = PD14;    //TS-10     //CORE-L9
 
     #endif
