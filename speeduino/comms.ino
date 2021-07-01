@@ -25,7 +25,13 @@ A full copy of the license may be found in the projects root directory
 */
 void command()
 {
-  if (cmdPending == false) { currentCommand = Serial.read(); }
+  if (cmdPending == false) { 
+    currentCommand = Serial.read(); 
+    
+    #if defined(LED_COMS)
+      digitalToggle(LED_COMS);
+    #endif     
+  }
 
   switch (currentCommand)
   {

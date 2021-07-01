@@ -28,6 +28,9 @@
 
 //#define RTC_ENABLED
 #define USE_SERIAL3
+#define BOARD_MAX_DIGITAL_PINS 110
+#define BOARD_MAX_IO_PINS 125 //digital pins + analog channels + 1
+
 
 //When building for Black board Serial1 is instanciated,building generic STM32F4x7 has serial2 and serial 1 must be done here
 #if SERIAL_UART_INSTANCE==2

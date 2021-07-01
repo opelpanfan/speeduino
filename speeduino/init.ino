@@ -2128,7 +2128,6 @@ void setPinMapping(byte boardID)
         
         pinTrigger = PE2; 
         pinTrigger2 = PE3; 
-        pinVSS = PE4;
 
         //******************************************
         //******** ANALOG CONNECTIONS *************** 
@@ -2150,34 +2149,34 @@ void setPinMapping(byte boardID)
         //******** INJECTOR CONNECTIONS *************** 
         //******************************************
         
-        pinInjector8 = PD13;  //
-        pinInjector7 = PD12; //
-        pinInjector6 = PD11;  //
-        pinInjector5 = PD10; //
-        pinInjector4 = PD9; //
-        pinInjector3 = PD8; //
-        pinInjector2 = PB15; //
-        pinInjector1 = PB14;  //
+        pinInjector1 = PD13;  //
+        pinInjector2 = PD12; //
+        pinInjector3 = PD11;  //
+        pinInjector4 = PD10; //
+        pinInjector6 = PD9; //
+        pinInjector6 = PD8; //
+        pinInjector7 = PB15; //
+        pinInjector8 = PB14;  //
         
         //******************************************
         //******** COIL CONNECTIONS *************** 
         //******************************************
 
-        pinCoil1 = PE15; //
-        pinCoil2 = PE14; //
-        pinCoil3 = PE13;  //
-        pinCoil4 = PE12;  //  
-        pinCoil5 = PE11;  //
-        pinCoil6 = PF15;//
-        pinCoil7 = PG0;  //
-        pinCoil8 = PG1;//
+        pinCoil2 = PE15; //
+        pinCoil1 = PE14; //
+        pinCoil4 = PE13;  //
+        pinCoil3 = PE12;  //  
+        pinCoil6 = PE11;  //
+        pinCoil5 = PF15;//
+        pinCoil8 = PG0;  //
+        pinCoil7 = PG1;//
 
         //******************************************
         //******** OTHER CONNECTIONS *************** 
         //******************************************
         
-        pinBoost = PD14; //
-        pinFan = PA15; //
+        pinBoost = PG4; //
+        pinFan = PG7; //
         pinFuelPump = PD3; //
         pinTachOut = PG3; //
         pinIdle1 = PG4; //
