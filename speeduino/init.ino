@@ -2149,6 +2149,8 @@ void setPinMapping(byte boardID)
         pinFuelPressure = PC4; //A10
         pinSpareTemp1 = PC0; //A0
         pinSpareTemp2 = PC1; //A1
+        pinSpareTemp1 = PC0; //A0
+        pinSpareTemp2 = PC1; //A1
 
         //******************************************
         //******** INJECTOR CONNECTIONS *************** 
