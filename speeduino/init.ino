@@ -240,6 +240,11 @@ void initialiseAll()
       Can0.begin();
       Can0.setBaudRate(500000);
       Can0.enableFIFO();
+      #if defined (USE_CAN2)       
+        Can1.begin();
+        Can1.setBaudRate(500000);
+        Can1.enableFIFO();
+      #endif
     #endif
 
     //Set the pin mappings

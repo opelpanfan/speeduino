@@ -56,8 +56,14 @@ STM32RTC& rtc = STM32RTC::getInstance();
       Timer11.attachInterrupt(1, oneMSInterval);
       Timer11.resume(); //Start Timer
     #endif
-    pinMode(LED_BUILTIN, OUTPUT); //Visual WDT
 
+    pinMode(LED_BUILTIN, OUTPUT); //Visual WDT
+    #if defined(LED_COMS)
+      pinMode(LED_COMS, OUTPUT); //Visual WDT
+    #endif
+    #if defined(LED_ALERT)
+      pinMode(LED_ALERT, OUTPUT); //Visual WDT
+    #endif
     /*
     ***********************************************************************************************************
     * Auxilliaries
