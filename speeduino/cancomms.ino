@@ -789,10 +789,6 @@ void dash_generic(FlexCAN_T4_Base *can)
 
   if (BIT_CHECK(LOOP_TIMER, BIT_TIMER_30HZ))
   {
-    #if defined(LED_COMS)
-      digitalToggle(LED_COMS);
-    #endif    
-    
     outMsg.id = 0x3E8;
     outMsg.len = 8;
     outMsg.buf[0] = 0;

@@ -26,6 +26,10 @@
 #define micros_safe() micros() //timer5 method is not used on anything but AVR, the micros_safe() macro is simply an alias for the normal micros()
 #define TIMER_RESOLUTION 4
 
+
+#define BOARD_MAX_DIGITAL_PINS 110
+#define BOARD_MAX_IO_PINS 110 //digital pins + analog channels + 1
+
 //#define RTC_ENABLED
 #define USE_SERIAL3
 #define BOARD_MAX_DIGITAL_PINS 110
@@ -306,9 +310,7 @@ void ignitionSchedule8Interrupt(HardwareTimer*);
 */
 #if defined(STM32F407xx) || defined(STM32F103xB) || defined(STM32F405xx)
 
-#define LED_BUILTIN PG10
-
-
+#define LED_BUILTIN PG11
 
 #define NATIVE_CAN_AVAILABLE
 //HardwareSerial CANSerial(PD6, PD5);
