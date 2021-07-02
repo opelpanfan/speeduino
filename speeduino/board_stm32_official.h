@@ -329,7 +329,7 @@ static CAN_message_t inMsg;
 #endif
 
 
-// #define USE_I2C_BARO
+#define USE_I2C_BARO
 #ifdef USE_I2C_BARO
 #include <src/LPS25HB/LPS25HBSensor.h>
 TwoWire dev_i2c(PB11, PB10);
